@@ -5,7 +5,7 @@ namespace LibraryManagement
     public class DatabaseHelper
     {
         private string connectionString =
-            @"Server=.\SQLEXPRESS;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=YOUR_SERVER;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public SqlConnection GetConnection()
         {

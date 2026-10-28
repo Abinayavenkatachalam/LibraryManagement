@@ -9,8 +9,12 @@ namespace LibraryManagement
         static void Main(string[] args)
         {
             DatabaseHelper db = new DatabaseHelper();
+
             BookRepository bookRepository = new BookRepository(db);
             BookService bookService = new BookService(bookRepository);
+
+            BorrowRepository borrowRepository = new BorrowRepository(db);
+            BorrowService borrowService = new BorrowService(borrowRepository);
 
             int choice;
 
@@ -18,6 +22,7 @@ namespace LibraryManagement
             {
                 Console.WriteLine("\n===== Library Management System =====");
                 Console.WriteLine("1. Add Book");
+                Console.WriteLine("2. Borrow Book");
                 Console.WriteLine("0. Exit");
 
                 Console.Write("Enter your choice: ");
@@ -35,6 +40,17 @@ namespace LibraryManagement
                         try
                         {
                             bookService.AddBook();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error: " + ex.Message);
+                        }
+                        break;
+
+                    case 2:
+                        try
+                        {
+                            borrowService.BorrowBook();
                         }
                         catch (Exception ex)
                         {
